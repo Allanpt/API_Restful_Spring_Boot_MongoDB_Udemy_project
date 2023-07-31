@@ -1,5 +1,6 @@
 package com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.resources;
 
+import com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.domain.Post;
 import com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.domain.User;
 import com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.dto.UserDTO;
 import com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.services.UserService;
@@ -33,6 +34,12 @@ public class UserResource {
 
         return ResponseEntity.ok().body(new UserDTO(user));
     }
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = service.findById(id);
+
+        return ResponseEntity.ok().body(user.getPosts());
+    }
 
     @PostMapping
     public ResponseEntity<Void> insert(@RequestBody UserDTO userDTO){
@@ -55,4 +62,5 @@ public class UserResource {
         user = service.update(user);
         return ResponseEntity.noContent().build();
     }
+
 }
