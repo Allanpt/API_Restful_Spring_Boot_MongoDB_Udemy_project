@@ -1,9 +1,12 @@
 package com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.domain;
 
 import com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.dto.AuthorDTO;
+import com.project.API_Restful_Spring_Boot_MongoDB_Udemy_project.dto.CommentDTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Post implements Serializable {
@@ -15,6 +18,7 @@ public class Post implements Serializable {
 
     private AuthorDTO author;
 
+    private List<CommentDTO> commentDTOList = new ArrayList<>();
 
     public Post() {
     }
@@ -65,6 +69,14 @@ public class Post implements Serializable {
 
     public void setAuthorDTO(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<CommentDTO> getCommentDTOList() {
+        return commentDTOList;
+    }
+
+    public void setCommentDTOList(List<CommentDTO> commentDTOList) {
+        this.commentDTOList = commentDTOList;
     }
 
     @Override
